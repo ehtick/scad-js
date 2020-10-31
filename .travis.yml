@@ -3,6 +3,10 @@ node_js:
   - '12'
   - '14'
   - '15'
+install:
+    - yarn global add codecov
 script:
   - yarn
   - yarn test
+  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
+  - codecov
